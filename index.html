@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>África · Val de la Torre Journey</title>
+  <title>África · Val de la Torre</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -682,6 +682,90 @@
     }
     .btn-secondary:hover { border-color: white; background: rgba(255,255,255,0.05); }
 
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 50px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover { color: white; }
+    .modal-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .modal-box .modal-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 36px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .form-group input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus { border-color: var(--gold); }
+    .form-group input::placeholder { color: rgba(255,255,255,0.2); }
+    .modal-box .btn-primary { width: 100%; text-align: center; cursor: pointer; border: none; margin-top: 8px; }
+    .form-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .form-success p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: white;
+      line-height: 1.5;
+    }
+    .form-success .gold { color: var(--gold); }
+
     /* ── FOOTER ── */
     footer {
       background: black;
@@ -733,7 +817,6 @@
   <!-- NAV -->
   <nav>
     <div class="logo"><span>Val de la Torre</span> × Tramuntana</div>
-    <a class="cta-nav" href="#cta">Reservar lugar</a>
   </nav>
 
   <!-- HERO -->
@@ -741,7 +824,6 @@
     <div class="bg"></div>
     <div class="overlay"></div>
     <div class="content">
-      <div class="badge">Val de la Torre Journey</div>
       <h1>ÁFRICA<br /><em>del Sur</em></h1>
       <div class="hero-meta">
         <div class="item"><strong>Cape Town · Botswana</strong>Destinos</div>
@@ -761,10 +843,10 @@
   <!-- INTRO -->
   <section id="intro">
     <div>
-      <div class="section-label">El Journey</div>
+      <div class="section-label">El Viaje</div>
       <h2>Una expedición que<br /><em>transforma</em></h2>
       <p>Llevo años explorando el mundo sin límites, desafiando lo establecido y descubriendo que la aventura no entiende de restricciones. Cada viaje me ha cambiado de formas que no esperaba.</p>
-      <p>Esta vez quiero que me acompañes. Te invito a un journey único por el sur de África — uno de los paisajes más impresionantes del planeta — para que tú también lo experimentes en primera persona.</p>
+      <p>Esta vez quiero que me acompañes. Te invito a un viaje único por el sur de África — uno de los paisajes más impresionantes del planeta — para que tú también lo experimentes en primera persona.</p>
       <div class="brand-line">Powered by <strong>Tramuntana</strong></div>
     </div>
     <div class="image-grid">
@@ -777,14 +859,14 @@
   <!-- VALUES -->
   <section id="valores">
     <div class="section-label" style="justify-content:center">El espíritu</div>
-    <h2>Te invito a <strong>replantear lo que significa explorar el mundo.</strong></h2>
+    <h2>Una experiencia para quienes creen que el espíritu de <strong>aventura no entiende de límites.</strong></h2>
     <div class="keywords">
       <div class="kw c1">AVENTURA</div>
       <div class="kw c2">RESILIENCIA</div>
       <div class="kw c3">NATURALEZA</div>
       <div class="kw c4">EXPLORAR</div>
     </div>
-    <p class="subtext">Un journey que diseñé para quienes, como yo, creen que el espíritu de aventura no entiende de límites.</p>
+    <p class="subtext">Acompáñame a seguir descubriendo el mundo.</p>
   </section>
 
   <!-- DESTINATIONS -->
@@ -901,7 +983,7 @@
     <div class="section-label" style="justify-content:center">Cupo exclusivo</div>
     <h2>Solo <em>6 lugares</em><br/>disponibles</h2>
     <p>Quiero que este viaje sea íntimo de verdad — por eso el grupo es pequeño. Así podemos convivir, conocernos de verdad y compartir la aventura de forma genuina.</p>
-    <p>Con 6 personas puedo cuidar cada detalle de la logística y mantener el espíritu de este Journey.</p>
+    <p>Con 6 personas puedo cuidar cada detalle de la logística y mantener el espíritu de este viaje.</p>
     <div class="group-tags">
       <div class="group-tag">Curaduría</div>
       <div class="group-tag">Expertise</div>
@@ -957,8 +1039,7 @@
       <h2>¿Te unes a mí<br/>en <em>África?</em></h2>
       <p>Solo quedan 6 lugares · Val de la Torre × Tramuntana</p>
       <div class="cta-buttons">
-        <a href="mailto:info@tramuntana.mx?subject=África Val de la Torre - Reserva" class="btn-primary">Quiero mi lugar</a>
-        <a href="https://wa.me/?text=Hola%2C%20me%20interesa%20el%20viaje%20a%20%C3%81frica%20Val%20de%20la%20Torre%20%E2%80%94%20Junio%202026" class="btn-secondary">Escribir por WhatsApp</a>
+        <button class="btn-primary" onclick="openModal()">Déjame tus datos</button>
       </div>
     </div>
   </section>
@@ -973,6 +1054,64 @@
       Reg. Nacional de Turismo #04141201101
     </div>
   </footer>
+
+  <!-- MODAL FORMULARIO -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="section-label" style="margin-bottom:12px">Junio 2026</div>
+      <h3>Quiero mi lugar</h3>
+      <p class="modal-sub">África · Val de la Torre × Tramuntana</p>
+      <form id="reserva-form">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" name="nombre" placeholder="Tu nombre completo" required />
+        </div>
+        <div class="form-group">
+          <label>Correo</label>
+          <input type="email" name="correo" placeholder="tu@correo.com" required />
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" name="telefono" placeholder="+52 55 0000 0000" required />
+        </div>
+        <button type="submit" class="btn-primary">Enviar</button>
+      </form>
+      <div class="form-success" style="display:none">
+        <p>¡Gracias! <span class="gold">Nos pondremos<br/>en contacto contigo pronto.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+    var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfyGzk9r-sntRkrctn0N1aYq61IokPMHQ382siyrv7m-bYyFS-5BktXJYsplPp19DgNw/exec';
+    document.getElementById('reserva-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var form = this;
+      var params = '?nombre=' + encodeURIComponent(form.nombre.value) +
+                   '&correo=' + encodeURIComponent(form.correo.value) +
+                   '&telefono=' + encodeURIComponent(form.telefono.value);
+      fetch(SCRIPT_URL + params, { mode: 'no-cors' })
+        .then(function() {
+          form.style.display = 'none';
+          document.querySelector('.form-success').style.display = 'block';
+        })
+        .catch(function() {
+          alert('Hubo un error, intenta de nuevo.');
+        });
+    });
+  </script>
 
 </body>
 </html>
