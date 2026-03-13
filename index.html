@@ -368,6 +368,60 @@
       max-width: 340px;
     }
 
+    /* ── GALLERY ── */
+    #galeria {
+      background: var(--dark);
+      padding: 80px 0 0;
+    }
+    .galeria-bloque {
+      padding: 0 0 60px;
+    }
+    .galeria-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0 60px 20px;
+    }
+    .galeria-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .galeria-grid-botswana {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 6px;
+    }
+    .galeria-grid-3 img,
+    .galeria-grid-botswana img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.4s;
+    }
+    .galeria-grid-botswana img.wide {
+      grid-column: 1 / 3;
+    }
+    .galeria-grid-botswana img.tall {
+      grid-row: 1 / 3;
+      height: 100%;
+    }
+    .galeria-grid-3 img:hover,
+    .galeria-grid-botswana img:hover { filter: saturate(1.15); }
+    @media (max-width: 768px) {
+      .galeria-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .galeria-grid-3 img { height: 200px; }
+      .galeria-grid-botswana { grid-template-columns: repeat(2, 1fr); }
+      .galeria-grid-botswana img { height: 200px; }
+      .galeria-grid-botswana img.wide { grid-column: 1 / 3; }
+      .galeria-grid-botswana img.tall { grid-row: auto; height: 200px; }
+      .galeria-label { padding: 0 24px 16px; }
+    }
+
     /* ── ITINERARY ── */
     #itinerario {
       background: var(--dark2);
@@ -893,6 +947,41 @@
     </div>
   </div>
 
+  <!-- GALLERY -->
+  <section id="galeria">
+
+    <div class="galeria-bloque">
+      <div class="galeria-label">Cape Town · Sudáfrica</div>
+      <div class="galeria-grid-3">
+        <img src="capetown-penguins.jpg" alt="Penguin Colony" />
+        <img src="capetown-huts.jpg" alt="Muizenberg Beach" />
+        <img src="capetown-bokaap.jpg" alt="Bo-Kaap" />
+      </div>
+    </div>
+
+    <div class="galeria-bloque">
+      <div class="galeria-label">Botswana · Safari</div>
+      <div class="galeria-grid-botswana">
+        <img src="botswana-sunset.jpg" alt="Atardecer" class="wide" />
+        <img src="botswana-elephant.jpg" alt="Elefante al amanecer" class="tall" />
+        <img src="botswana-gamedrive.jpg" alt="Game Drive" />
+        <img src="botswana-lion.jpg" alt="León" />
+        <img src="botswana-acacia.jpg" alt="Elefantes bajo la acacia" />
+        <img src="botswana-nightdrive.jpg" alt="Night Drive" />
+      </div>
+    </div>
+
+    <div class="galeria-bloque">
+      <div class="galeria-label">Letaka Safari Camp · El campamento</div>
+      <div class="galeria-grid-3">
+        <img src="letaka-camp.jpg" alt="Campamento" />
+        <img src="letaka-tent-interior.jpg" alt="Interior de la tienda" />
+        <img src="letaka-guide.jpg" alt="Nuestro guía" />
+      </div>
+    </div>
+
+  </section>
+
   <!-- ITINERARY -->
   <section id="itinerario">
     <div class="section-label">Día a día</div>
@@ -1039,7 +1128,7 @@
       <h2>¿Te unes a mí<br/>en <em>África?</em></h2>
       <p>Solo quedan 6 lugares · Val de la Torre × Tramuntana</p>
       <div class="cta-buttons">
-        <button class="btn-primary" onclick="openModal()">Déjame tus datos</button>
+        <button class="btn-primary" onclick="openModal()">Quiero mi lugar</button>
       </div>
     </div>
   </section>
