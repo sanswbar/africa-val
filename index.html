@@ -393,8 +393,8 @@
     }
     .foto-strip {
       display: grid;
-      gap: 12px;
-      padding: 12px;
+      gap: 0;
+      padding: 0;
       background: var(--dark);
       max-width: 81%;
       margin: 0 auto;
@@ -403,7 +403,8 @@
     .foto-strip-4 { grid-template-columns: repeat(4, 1fr); }
     .foto-strip img {
       width: 100%;
-      height: auto;
+      height: 280px;
+      object-fit: cover;
       display: block;
     }
     @media (max-width: 768px) {
